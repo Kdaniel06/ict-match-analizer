@@ -1,0 +1,156 @@
+// match.component.scss
+
+// Variables para los colores
+$primary-color: #06AED5;   // Color primario
+$secondary-color: #E55381; // Color secundario
+$highlight-color: #FCF300; // Color de acento
+$background-color: #f8f8f8; // Color de fondo
+
+.title-container {
+    display: flex;
+    align-items: center; // Centra verticalmente
+    justify-content: center; // Centra horizontalmente
+    margin: 20px 0; // Espacio alrededor del contenedor
+  
+    .side-image {
+      width: 50px; // Ajusta el tamaño de la imagen según tus necesidades
+      height: auto; // Mantiene la proporción
+      margin: 0 10px; // Espacio entre la imagen y el título
+    }
+  
+    h1 {
+      margin: 0; // Elimina el margen del título
+      color: $primary-color; // Usa la variable de color que ya tienes
+    }
+}
+  
+
+body {
+  background-color: $background-color;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  div {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: $primary-color;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid $primary-color;
+      border-radius: 5px;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+        border-color: $secondary-color;
+      }
+    }
+  }
+
+  button[type="submit"] {
+    background-color: $primary-color;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: row; // Cambia a dirección horizontal
+    justify-content: space-around; // Distribuye el espacio entre los elementos
+    align-items: flex-start; // Alinea los elementos al inicio
+    margin-top: 30px;
+    flex-wrap: wrap; // Permite que los elementos se envuelvan en pantallas más pequeñas
+  
+    h2 {
+      color: $secondary-color;
+      margin-bottom: 20px;
+      width: 100%; // Asegura que el título ocupe todo el ancho
+      text-align: center; // Centra el título
+    }
+  
+    .equipo-stats {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px;
+      width: 100%; // Cambia a 100% para ajustarse en flexbox
+      max-width: 400px; // Mantiene el tamaño máximo para cada tarjeta
+  
+      h3 {
+        color: $primary-color;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        margin: 5px 0;
+        color: #333;
+      }
+  
+      ul {
+        list-style-type: none;
+        padding: 0;
+  
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 5px;
+  
+          button {
+            background: transparent;
+            border: none;
+            color: $secondary-color;
+            cursor: pointer;
+            transition: color 0.3s ease;
+  
+            &:hover {
+              color: darken($secondary-color, 10%);
+            }
+          }
+        }
+      }
+  
+      button {
+        margin-right: 10px;
+        background-color: $highlight-color;
+        color: black;
+  
+        &:hover {
+          background-color: darken($highlight-color, 10%);
+        }
+      }
+    }
+  
+    // Botón de reinicio
+    button.warn {
+      background-color: $secondary-color;
+      color: white;
+  
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
+  

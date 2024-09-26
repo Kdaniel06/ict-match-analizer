@@ -1,0 +1,96 @@
+<div>
+    <div class="title-container">
+        <img src="../../../assets/Isotipo PRIMARIO.png" alt="Imagen Izquierda" class="side-image" />
+        <h1>Registro de Partido de Fútbol</h1>
+        <img src="../../../assets/Isotipo PRIMARIO.png" alt="Imagen Derecha" class="side-image" />
+    </div>
+  
+    <!-- Formulario para ingresar los equipos -->
+    <form (ngSubmit)="initMatch()">
+      <div>
+        <label for="equipo1">Nombre del Equipo 1:</label>
+        <input type="text" [(ngModel)]="team1.name" name="equipo1" required />
+      </div>
+      <br />
+      <div>
+        <label for="equipo2">Nombre del Equipo 2:</label>
+        <input type="text" [(ngModel)]="team2.name" name="equipo2" required />
+      </div>
+      <br />
+      <button type="submit" mat-raised-button color="primary">Iniciar Partido</button>
+    </form>
+  
+    <!-- Mostrar estadísticas después de iniciar el partido -->
+     @if (RunningMatch) {
+         <div class="stats-container">
+           <h2>{{ team1.name }} vs {{ team2.name }}</h2>
+       
+           <div class="equipo-stats">
+             <h3>{{ team1.name }}</h3>
+             <p>Tiros Desviado: {{ team1.shoots }}</p>
+             <p>Tiros a Arco: {{ team1.onGoalShoots }}</p>
+             <p>Faltas: {{ team1.fouls }}</p>
+             <p>Goles: {{ team1.goals }}</p>
+             <ul>
+                @for (scorer of team1.goalScorers; track $index) {
+                    <li>{{ scorer.player }} @if (scorer.assistant) {<span>asistido por {{ scorer.assistant }}</span>}
+                        <button (click)="editGoal('team1', $index)" mat-icon-button>
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </li>
+                }
+             </ul>
+             <p>Tarjetas Amarillas: {{ team1.yellowCards }}</p>
+             <p>Tarjetas Rojas: {{ team1.redCards }}</p>
+             <ul>
+                @for (player of team1.cardPlayers; track $index) {
+                    <li>{{ player.player }} <span>recibió tarjeta {{ player.color }}</span>
+                    </li>
+                }
+             </ul>
+       
+             <button (click)="registrarEvento('team1', 'shoots')" mat-raised-button>Añadir Tiro Desviado</button>
+             <button (click)="registrarEvento('team1', 'onGoalShoots')" mat-raised-button>Añadir Tiro a Arco</button>
+             <button (click)="registrarEvento('team1', 'fouls')" mat-raised-button>Añadir Falta</button>
+             <button (click)="registrarEvento('team1', 'goals')" mat-raised-button>Añadir Gol</button>
+             <button (click)="addYellowCard('team1')" mat-raised-button>Añadir Tarjeta Amarilla</button>
+             <button (click)="addRedCard('team1')" mat-raised-button>Añadir Tarjeta Roja</button>
+           </div>
+       
+           <div class="equipo-stats">
+             <h3>{{ team2.name }}</h3>
+             <p>Tiros Desviado: {{ team2.shoots }}</p>
+             <p>Tiros a Arco: {{ team2.onGoalShoots }}</p>
+             <p>Faltas: {{ team2.fouls }}</p>
+             <p>Goles: {{ team2.goals }}</p>
+             <ul>
+                @for (scorer of team2.goalScorers; track $index) {
+                    <li>{{ scorer.player }} @if (scorer.assistant) {<span>asistido por {{ scorer.assistant }}</span>}
+                        <button (click)="editGoal('team2', $index)" mat-icon-button>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </li>
+                }
+             </ul>
+             <p>Tarjetas Amarillas: {{ team1.yellowCards }}</p>
+             <p>Tarjetas Rojas: {{ team1.redCards }}</p>
+             <ul>
+                @for (player of team2.cardPlayers; track $index) {
+                    <li>{{ player.player }} <span>recibió tarjeta {{ player.color }}</span>
+                    </li>
+                }
+             </ul>
+       
+             <button (click)="registrarEvento('team2', 'shoots')" mat-raised-button>Añadir Tiro Desviado</button>
+             <button (click)="registrarEvento('team2', 'onGoalShoots')" mat-raised-button>Añadir Tiro a Arco</button>
+             <button (click)="registrarEvento('team2', 'fouls')" mat-raised-button>Añadir Falta</button>
+             <button (click)="registrarEvento('team2', 'goals')" mat-raised-button>Añadir Gol</button>
+             <button (click)="addYellowCard('team2')" mat-raised-button>Añadir Tarjeta Amarilla</button>
+             <button (click)="addRedCard('team2')" mat-raised-button>Añadir Tarjeta Roja</button>
+           </div>
+         </div>
+         <!-- Botón de reinicio -->
+        <button (click)="resetMatch()" mat-raised-button color="warn">Reiniciar Partido</button>
+     }
+  </div>
+  
