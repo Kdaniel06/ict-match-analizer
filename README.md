@@ -1,27 +1,121 @@
-# FutcrewMatchAnalyzer
+# FutCrew Match Analyzer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+**FutCrew Match Analyzer** is a web application that allows you to analyze and record events from soccer matches. Built using Angular and TypeScript, it helps manage the data of two teams, recording shots, goals, fouls, cards, and match statistics.
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The project allows:
+- Creating and managing information for two teams.
+- Recording match events: shots, goals, assists, fouls, and cards (yellow and red).
+- Editing goal scorers and their assists.
+- Resetting the match to start over.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular**: The project uses Angular 17 for frontend development.
+- **Reusable Components**: The `MatchComponent` manages the match interface.
+- **Clear Models**: Uses a `Team` model to represent the information and statistics of each team.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Clone the repository
 
-## Running unit tests
+```bash
+git clone https://github.com/your-username/futcrew-match-analyzer.git
+cd futcrew-match-analyzer
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Install dependencies
+Make sure you have Node.js and Angular CLI installed. Then, install the dependencies by running:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Running the Application
+To start the development server:
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+By default, the application will be available at http://localhost:4200/.
+
+## Project Structure
+The project structure includes the following folders:
+
+```css
+src
+├───app
+│   ├───components
+│   │   └───match
+│   └───models
+└───assets
+``` 
+
+* app/components/match: Contains the main component (match.component.ts) that handles the match.
+* app/models: Contains the Team model (team.model.ts) used to represent the teams.
+
+## Usage
+### Create a Match
+1. Start the application and provide names for both teams.
+2. Click on "Start Match" to begin recording events.
+
+### Register Events
+* Shots, Goals, Fouls: Use the buttons to register events occurring during the match.
+* Cards: Register yellow or red cards by entering the player's name.
+* Edit Goals: Edit the name of the goal scorer or assistant by clicking "Edit".
+
+### Reset the Match
+Click on "Reset Match" to clear the data for both teams and start again.
+
+## Live Demo
+The application is deployed and can be accessed here: [FutCrew Match Analyzer](https://futcrew-match-analyzer.netlify.app)
+
+## Code Highlights
+### MatchComponent
+The main match component is located in app/components/match/match.component.ts. It handles starting the match, registering events, and managing the statistics of the teams.
+
+```typescript
+import { Component } from '@angular/core';
+// Necessary imports
+
+@Component({
+  selector: 'app-match',
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatIconModule,
+    MatButtonModule
+  ],
+  templateUrl: './match.component.html',
+  styleUrls: ['./match.component.scss']
+})
+export class MatchComponent {
+  // Match logic here
+}
+``` 
+
+### Team Model
+The Team model (app/models/team.model.ts) is used to represent team information and related statistics, such as goals, fouls, and cards.
+
+```typescript
+export class Team {
+    name: string;
+    // More properties and methods to manage statistics
+}
+```
+
+## Technologies Used
+* Angular 17: Framework for frontend development.
+* SCSS: For styling.
+* TypeScript: For source code development.
+
+## Author
+Daniel Cascante
+
+## License
+This project is licensed under the ISC License.
+
+## Contributions
+Contributions are welcome. If you wish to collaborate, feel free to fork the project and submit a pull request.
